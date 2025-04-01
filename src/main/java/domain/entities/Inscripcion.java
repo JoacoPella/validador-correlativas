@@ -1,3 +1,5 @@
+package domain.entities;
+
 import java.util.Set;
 
 public class Inscripcion {

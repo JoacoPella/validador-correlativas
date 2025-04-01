@@ -1,5 +1,8 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import domain.entities.Alumno;
+import domain.entities.Inscripcion;
+import domain.entities.Materia;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;

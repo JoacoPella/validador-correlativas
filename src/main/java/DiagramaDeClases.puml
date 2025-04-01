@@ -1,0 +1,31 @@
+@startuml
+
+class Alumno {
+    - String nombre
+    - String apellido
+    - Set<Materia> materiasAprobadas
+
+    + agregarMateriaAprobada(Materia materia) : void
+}
+
+class Materia {
+    - String materia
+    - Set<Materia> materiasAprobadas
+
+    + cumpleCorrelativas(Set<Materia> materias) : void
+}
+
+class Inscripcion {
+    - Alumno alumno
+    - Set<Materia> materiasAcursar
+    - Boolean fueAprobada
+
+    + aprobada() : void
+}
+
+Inscripcion --> Alumno
+Inscripcion --> Materia
+Alumno -->"*" Materia
+Materia -->"*" Materia
+
+@enduml

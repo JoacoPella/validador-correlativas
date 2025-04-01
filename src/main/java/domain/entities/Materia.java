@@ -1,3 +1,5 @@
+package domain.entities;
+
 import lombok.*;
 
 import java.util.Set;
