@@ -1,8 +1,6 @@
-import static org.junit.jupiter.api.Assertions.*;
+package domain.entities;
 
-import domain.entities.Alumno;
-import domain.entities.Inscripcion;
-import domain.entities.Materia;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
@@ -11,58 +9,58 @@ import java.util.Set;
 class AlumnoMateriaInscripcionTest {
 
     @Test
-    void testCrearAlumno() {
+    public void testCrearAlumno() {
         Alumno alumno = new Alumno("Joaco", "Pella", Set.of());
-        
-        assertEquals("Joaco", alumno.getNombre());
-        assertEquals("Pella", alumno.getApellido());
-        assertTrue(alumno.getMateriasAprobadas().isEmpty());
+
+        Assertions.assertEquals("Joaco", alumno.getNombre());
+        Assertions.assertEquals("Pella", alumno.getApellido());
+        Assertions.assertTrue(alumno.getMateriasAprobadas().isEmpty());
     }
 
     @Test
-    void testAgregarMateriaAprobada() {
+    public void testAgregarMateriaAprobada() {
         Alumno alumno = new Alumno("Joaco", "Pella", Set.of());
         Materia dds = new Materia("DDS", Set.of());
-        
+
         alumno.agregarMateriaAprobada(dds);
-        assertTrue(alumno.getMateriasAprobadas().contains(dds));
+        Assertions.assertTrue(alumno.getMateriasAprobadas().contains(dds));
     }
 
     @Test
-    void testMateriaCumpleCorrelativas() {
+    public void testMateriaCumpleCorrelativas() {
         Materia ads = new Materia("ADS", Set.of());
         Materia dds = new Materia("DDS", Set.of(ads));
-        
-        assertTrue(dds.cumpleCorrelativas(Set.of(ads))); 
-        assertFalse(dds.cumpleCorrelativas(Set.of()));   
+
+        Assertions.assertTrue(dds.cumpleCorrelativas(Set.of(ads)));
+        Assertions.assertFalse(dds.cumpleCorrelativas(Set.of()));
     }
 
     @Test
-    void testMateriaSinCorrelativas() {
+    public void testMateriaSinCorrelativas() {
         Materia am1 = new Materia("AM1", Set.of());
-        
-        assertTrue(am1.cumpleCorrelativas(Set.of()));  
+
+        Assertions.assertTrue(am1.cumpleCorrelativas(Set.of()));
     }
 
     @Test
-    void testInscripcionAprobada() {
+    public void testInscripcionAprobada() {
         Materia ads = new Materia("ADS", Set.of());
         Materia dds = new Materia("DDS", Set.of(ads));
         Alumno alumno = new Alumno("Joaco", "Pella", Set.of(ads));
-        
+
         Inscripcion inscripcion = new Inscripcion(Set.of(dds), alumno);
-        
-        assertTrue(inscripcion.aprobada()); 
+
+        Assertions.assertTrue(inscripcion.aprobada());
     }
 
     @Test
-    void testInscripcionNoAprobada() {
+    public void testInscripcionNoAprobada() {
         Materia ads = new Materia("ADS", Set.of());
         Materia dds = new Materia("DDS", Set.of(ads));
         Alumno alumno = new Alumno("Joaco", "Pella", Set.of());
-        
+
         Inscripcion inscripcion = new Inscripcion(Set.of(dds), alumno);
-        
-        assertFalse(inscripcion.aprobada()); 
+
+        Assertions.assertFalse(inscripcion.aprobada());
     }
 }
