@@ -2,15 +2,15 @@ import java.util.Set;
 
 public class Inscripcion {
     private Alumno alumno;
-    private Set<Materia> materiasACursar;
+    private Set<Materia> materiasAcursar;
     private boolean fueAprobada;
 
-    public Inscripcion(Set<Materia> materiasACursar, Alumno alumno) {
-        this.materiasACursar = materiasACursar;
+    public Inscripcion(Set<Materia> materiasAcursar, Alumno alumno) {
+        this.materiasAcursar = materiasAcursar;
         this.alumno = alumno;
     }
 
     public boolean aprobada(){
-        return this.materiasACursar.stream().allMatch(m -> m.cumpleCorrelativas(alumno.getMateriasAprobadas()));
+        return this.materiasAcursar.stream().allMatch(m -> m.cumpleCorrelativas(alumno.getMateriasAprobadas()));
     }
 }
